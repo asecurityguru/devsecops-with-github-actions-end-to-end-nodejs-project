@@ -23,7 +23,7 @@ jobs:
           -Dsonar.projectKey=devsecopsganodejsprojectkey
   security:
     runs-on: ubuntu-latest
-    needs: build
+    #needs: build
     name: Run the SCA scan on the source code
     steps:
       - uses: actions/checkout@master
