@@ -1,4 +1,4 @@
-name: Build code, run unit test, run SAST, SCA, DAST security scans
+name: Build code, run unit test, run SAST, SCA, DAST security scans for NodeJs App
 on: push
 
 jobs:
@@ -48,3 +48,10 @@ jobs:
           target: 'http://example.com/'
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a'
+
+
+
+
+
+
+          
