@@ -1,4 +1,4 @@
-name: Build code, run unit test, run SAST, SCA, DAST security scans for NodeJs App
+name: Build code, run SAST, SCA, DAST security scans for NodeJs App
 on: push
 
 jobs:
@@ -19,8 +19,8 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       with:
         args: >
-          -Dsonar.organization=dotnetgithubactionsorg
-          -Dsonar.projectKey=dotnetgithubactionsproject
+          -Dsonar.organization=vamdev-devsecops
+          -Dsonar.projectKey=vamdev-devsecops_nodejs
   security:
     runs-on: ubuntu-latest
     needs: build
@@ -36,6 +36,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: security
     name: Run DAST scan on the web application
+
+    # adding github write permission to create github issue for dast to create report/artifact:
+    permissions:
+      issues: write
+      contents: read # Good practice to keep read access to the repo code
+      
     steps:
       - name: Checkout
         uses: actions/checkout@v4
